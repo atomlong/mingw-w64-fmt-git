@@ -49,7 +49,7 @@ package() {
     cd "${srcdir}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     mkdir -p "${pkgdir}"/usr/${_arch}/bin
-    mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/
+    mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/ 2>/dev/null || true
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
   for _arch in ${_architectures}; do
